@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+console.log(`[MerchantModel] Defining merchant schema...`);
+
 const merchantSchema = new mongoose.Schema({
   merchantID: { type: String, required: true, unique: true, index: true },
   postmanToken: { type: String, default: '' },
@@ -13,4 +15,9 @@ const merchantSchema = new mongoose.Schema({
   refreshToken: { type: String, default: '' }
 }, { timestamps: true });
 
-export default mongoose.model('Merchant', merchantSchema);
+console.log(`[MerchantModel] Merchant schema defined with fields: merchantID, postmanToken, xeroClientId, xeroClientSecret, xeroTenantId, baseUrl, paymentUrl, userID, webhookURL, refreshToken`);
+
+const Merchant = mongoose.model('Merchant', merchantSchema);
+console.log(`[MerchantModel] Merchant model registered with Mongoose`);
+
+export default Merchant;
